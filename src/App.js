@@ -5,14 +5,19 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <div className="app">
+        <div className="app-header">
+          <img src={logo} className="app-logo" alt="logo" />
+          <h1>Welcome to Linkshare</h1>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+        <p className="app-intro">
+          Check back soon to start sharing and discovering links.
         </p>
+        <footer className="app-footer">
+          <span class="attribution">
+            Icon made by <a href="http://www.freepik.com/" target="_blank">Freepik</a> from <a href="www.flaticon.com" target="_blank">www.flaticon.com</a>
+          </span>
+        </footer>
       </div>
     );
   }
