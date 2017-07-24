@@ -6,15 +6,15 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div className="app-header">
+        <header className="app-header">
           <img src={logo} className="app-logo" alt="logo" />
           <h1>Welcome to Linkshare</h1>
-        </div>
-        <p className="app-intro">
+        </header>
+        <main className="app-intro">
           Check back soon to start sharing and discovering links.
-        </p>
+        </main>
         <footer className="app-footer">
-          <span class="attribution">
+          <span className="attribution">
             Icon made by <a href="http://www.freepik.com/" target="_blank">Freepik</a> from <a href="www.flaticon.com" target="_blank">www.flaticon.com</a>
           </span>
         </footer>
