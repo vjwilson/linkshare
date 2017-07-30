@@ -1,35 +1,33 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import ReactTestUtils from 'react-dom/test-utils';
+import { shallow } from 'enzyme';
 
 import App from './App';
 
 it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<App />, div);
+  const wrapper = shallow(<App />);
+  expect(wrapper).toBeTruthy();
 });
 
 it('renders a header with the appropriate class', () => {
-  const wrapper = ReactTestUtils.renderIntoDocument(<App />);
+  const wrapper = shallow(<App />);
 
-  const header = ReactTestUtils.scryRenderedDOMComponentsWithTag(wrapper, 'header');
-  const headerWithClass = ReactTestUtils.scryRenderedDOMComponentsWithClass(wrapper, 'app-header');
+  const header = wrapper.find('header');
 
-  expect(header.length).toEqual(1);
-  expect(headerWithClass.length).toEqual(1);
-  expect(header).toEqual(headerWithClass);
+  expect(header).toHaveClassName('app-header');
 });
 
 it('renders a main element', () => {
-  const wrapper = ReactTestUtils.renderIntoDocument(<App />);
+  const wrapper = shallow(<App />);
 
-  const main = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'main');
+  const header = wrapper.find('main');
+
+  expect(header).toHaveClassName('app-intro');
 });
 
 it('renders a footer', () => {
-  const wrapper = ReactTestUtils.renderIntoDocument(<App />);
+  const wrapper = shallow(<App />);
 
-  const footer = ReactTestUtils.scryRenderedDOMComponentsWithTag(wrapper, 'footer');
+  const header = wrapper.find('footer');
 
-  expect(footer.length).toEqual(1);
+  expect(header).toHaveClassName('app-footer');
 });
