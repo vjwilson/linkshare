@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import logo from '../../logo.svg';
+
+import LinkItem from '../LinkItem/LinkItem';
+
 import './App.css';
 
 class App extends Component {
@@ -11,7 +14,7 @@ class App extends Component {
           <h1>Welcome to Linkshare</h1>
         </header>
         <main className="app-intro">
-          Check back soon to start sharing and discovering links.
+          <LinkItem favoriteCount="3" linkUrl="http://www.csszengarden.com" />
         </main>
         <footer className="app-footer">
           <span className="attribution">

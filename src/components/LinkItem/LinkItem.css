@@ -1,0 +1,10 @@
+.link-item {
+  align-items: center;
+  border:  1px solid #333;
+  display: flex;
+}
+
+.link-item-faves,
+.link-item-info {
+  padding: 1rem;
+}
