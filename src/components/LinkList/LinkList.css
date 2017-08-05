@@ -1,0 +1,11 @@
+.link-list {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1em;
+}
+
+.link-list .link-item {
+  margin-bottom:  1em;
+  width: 100%;
+}
