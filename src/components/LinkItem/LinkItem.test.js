@@ -7,7 +7,7 @@ import LinkItem from './LinkItem';
 describe('LinkItem component', () => {
   it('renders without crashing', () => {
     const wrapper = shallow(<LinkItem />);
-    expect(wrapper).toBeTruthy();
+    expect(wrapper).toHaveLength(1);
   });
 
   it('should have the appropriate class', () => {
@@ -35,7 +35,7 @@ describe('LinkItem component', () => {
   it('should render its favorites prop', () => {
     const wrapper = shallow(<LinkItem favoriteCount="12" />);
 
-    const favorites = wrapper.find('.link-item-faves');
+    const favorites = wrapper.find('.fave-count');
 
     expect(favorites.text()).toEqual('12');
   });
@@ -43,7 +43,7 @@ describe('LinkItem component', () => {
   it('should render 0 for favorites if no prop is given', () => {
     const wrapper = shallow(<LinkItem />);
 
-    const favorites = wrapper.find('.link-item-faves');
+    const favorites = wrapper.find('.fave-count');
 
     expect(favorites.text()).toEqual('0');
   });
@@ -62,5 +62,30 @@ describe('LinkItem component', () => {
     const linkAnchor = wrapper.find('.link-item-link');
 
     expect(linkAnchor.prop('href')).toEqual('http://www.daringfireball.com');
+  });
+
+  it('should have an Add button in its favorites child', () => {
+    const wrapper = shallow(<LinkItem />);
+
+    const favoritesChild = wrapper.find('.link-item-faves');
+    const addFaveButton = favoritesChild.find('button');
+
+    expect(addFaveButton).toHaveLength(1);
+    expect(addFaveButton).toHaveClassName('add-fave');
+  });
+
+  it('should call the action prop when the Add button is clicked', () => {
+    const mock = jest.fn();
+    const props = {
+      favoriteCount: 11,
+      linkUrl: 'https://alistapart.com',
+      action: mock
+    }
+    const wrapper = shallow(<LinkItem {...props} />);
+
+    const addFaveButton = wrapper.find('.add-fave');
+    addFaveButton.simulate('click');
+
+    expect(mock).toHaveBeenCalled();
   });
 });

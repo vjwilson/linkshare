@@ -4,7 +4,7 @@ import LinkItem from '../LinkItem/LinkItem';
 
 import './LinkList.css';
 
-const LinkList = ({ links }) => {
+const LinkList = ({ links, increment }) => {
   const cleansedLinks = Array.isArray(links)
     ? links
     : [];
@@ -15,6 +15,7 @@ const LinkList = ({ links }) => {
         key={index}
         favoriteCount={link.favorites}
         linkUrl={link.linkUrl}
+        action={increment}
       />
     );
   });
