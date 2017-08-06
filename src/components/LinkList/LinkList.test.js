@@ -8,7 +8,7 @@ import LinkItem from '../LinkItem/LinkItem';
 describe('LinkList component', () => {
   it('renders without crashing', () => {
     const wrapper = shallow(<LinkList />);
-    expect(wrapper).toBeTruthy();
+    expect(wrapper).toHaveLength(1);
   });
 
   it('should have the appropriate class', () => {

@@ -8,3 +8,24 @@
 .link-item-info {
   padding: 1rem;
 }
+
+.link-item-faves {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  font-size: 2rem;
+  justify-content: flex-end;
+  width: 5rem;
+}
+
+.add-fave {
+  background-color: firebrick;
+  border: 0;
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  font-size:  1.3rem;
+  font-weight: bold;
+  margin-left: .5rem;
+  margin-right: .5rem;
+}

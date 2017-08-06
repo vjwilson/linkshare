@@ -9,21 +9,30 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    const links = [
-      {
-        linkUrl: 'http://www.csszengarden.com',
-        favorites: 10
-      },
-      {
-        linkUrl: 'http://www.daringfireball.com',
-        favorites: 15
-      }
-    ];
-
     this.state = {
-      links: links
+      links: props.links
     };
+
+    this.incrementLinkCount = this.incrementLinkCount.bind(this);
   }
+
+  incrementLinkCount(linkUrl) {
+    const updatedLinkList = this.state.links.map((link) => {
+      if (link.linkUrl === linkUrl) {
+        return {
+          linkUrl: link.linkUrl,
+          favorites: link.favorites + 1
+        };
+      } else {
+        return link;
+      }
+    });
+
+    this.setState({
+      links: updatedLinkList
+    });
+  }
+
   render() {
     return (
       <div className="app">
@@ -32,7 +41,7 @@ class App extends Component {
           <h1>Welcome to Linkshare</h1>
         </header>
         <main className="app-intro">
-          <LinkList links={this.state.links} />
+          <LinkList links={this.state.links} increment={this.incrementLinkCount} />
         </main>
         <footer className="app-footer">
           <span className="attribution">
