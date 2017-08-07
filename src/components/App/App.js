@@ -1,38 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import logo from '../../logo.svg';
 
 import LinkList from '../LinkList/LinkList';
 
+import { incrementFavorites } from '../../actions/linkActions.js';
+
 import './App.css';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      links: props.links
-    };
-
-    this.incrementLinkCount = this.incrementLinkCount.bind(this);
-  }
-
-  incrementLinkCount(linkUrl) {
-    const updatedLinkList = this.state.links.map((link) => {
-      if (link.linkUrl === linkUrl) {
-        return {
-          linkUrl: link.linkUrl,
-          favorites: link.favorites + 1
-        };
-      } else {
-        return link;
-      }
-    });
-
-    this.setState({
-      links: updatedLinkList
-    });
-  }
-
+export class App extends Component {
   render() {
     return (
       <div className="app">
@@ -41,11 +17,11 @@ class App extends Component {
           <h1>Welcome to Linkshare</h1>
         </header>
         <main className="app-intro">
-          <LinkList links={this.state.links} increment={this.incrementLinkCount} />
+          <LinkList links={this.props.links} increment={this.props.incrementLinkCount} />
         </main>
         <footer className="app-footer">
           <span className="attribution">
-            Icon made by <a href="http://www.freepik.com/" target="_blank">Freepik</a> from <a href="www.flaticon.com" target="_blank">www.flaticon.com</a>
+            Icon made by <a href="http://www.freepik.com/" target="_blank" rel="noopener noreferrer">Freepik</a> from <a href="www.flaticon.com" target="_blank" rel="noopener noreferrer">www.flaticon.com</a>
           </span>
         </footer>
       </div>
@@ -53,4 +29,16 @@ class App extends Component {
   }
 }
 
-export default App;
+function mapStateToProps(state) {
+  return {
+    links: state.links
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    incrementLinkCount: (linkUrl) => dispatch(incrementFavorites(linkUrl))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

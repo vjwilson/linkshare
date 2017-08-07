@@ -1,4 +1,4 @@
-import * as favoriteActions from '../actions/favoriteActions';
+import * as linkActions from '../actions/linkActions';
 import * as types from './actionTypes';
 
 describe('Favorite actions', () => {
@@ -9,7 +9,7 @@ describe('Favorite actions', () => {
       linkUrl: linkUrl
     };
 
-    const action = favoriteActions.incrementFavorites(linkUrl);
+    const action = linkActions.incrementFavorites(linkUrl);
 
     expect(action).toEqual(expectedAction);
   });

@@ -1,28 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
 import './index.css';
+
 import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
+import configureStore from './store/configureStore';
 
-const links = [
-  {
-    linkUrl: 'http://www.csszengarden.com',
-    favorites: 10
-  },
-  {
-    linkUrl: 'https://daringfireball.net',
-    favorites: 15
-  },
-  {
-    linkUrl: 'https://alistapart.com',
-    favorites: 9
-  },
-  {
-    linkUrl: 'https://www.smashingmagazine.com',
-    favorites: 18
-  }
-];
+const store = configureStore();
 
-
-ReactDOM.render(<App links={links} />, document.getElementById('root'));
+ReactDOM.render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  document.getElementById('root'));
 registerServiceWorker();
