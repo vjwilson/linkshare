@@ -1,10 +1,9 @@
-Feature: Example feature
-  As a user of Cucumber.js
-  I want to have documentation on Cucumber
-  So that I can concentrate on building awesome applications
+Feature: List of links
+  As a user of Linkshare
+  I want to see a list of links
+  So that I can decide what articles I want to read
 
-  Scenario: Reading documentation
-    Given I am on the Cucumber.js GitHub repository
-    When I click on "CLI"
-    Then I should see "Running specific features"
-
+  Scenario: Viewing list of links
+    Given I am on the Linkshare homepage
+    When I look for a list of links
+    Then I should see one or more link elements

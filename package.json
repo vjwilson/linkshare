@@ -21,6 +21,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "e2e-tests": "cucumber-js",
     "eject": "react-scripts eject"
   }
 }

@@ -1,21 +1,21 @@
 var seleniumWebdriver = require('selenium-webdriver');
 var {defineSupportCode} = require('cucumber');
+var assert = require('assert');
 
 defineSupportCode(function({Given, When, Then}) {
-  Given('I am on the Cucumber.js GitHub repository', function() {
-    return this.driver.get('https://github.com/cucumber/cucumber-js/tree/master');
+  var links;
+
+  Given('I am on the Linkshare homepage', function() {
+    return this.driver.get('http://localhost:3000');
   });
 
-  When('I click on {string}', function (text) {
-    return this.driver.findElement({linkText: text}).then(function(element) {
-      return element.click();
+  When('I look for a list of links', function () {
+    return this.driver.findElements({css: '.link-list .link-item'}).then(function(elements) {
+      links = elements;
     });
   });
 
-  Then('I should see {string}', function (text) {
-    var xpath = "//*[contains(text(),'" + text + "')]";
-    var condition = seleniumWebdriver.until.elementLocated({xpath: xpath});
-    return this.driver.wait(condition, 5000);
+  Then('I should see one or more link elements', function () {
+    assert(links.length, 4);
   });
 });
-
