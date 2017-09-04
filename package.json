@@ -9,19 +9,19 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "chromedriver": "2.29.0",
+    "cucumber": "^3.0.1",
     "enzyme": "^2.9.1",
     "jest-enzyme": "^3.6.1",
-    "nightwatch": "^0.9.16",
     "react-scripts": "1.0.10",
     "react-test-renderer": "^15.6.1",
-    "selenium-standalone": "^6.6.0"
+    "selenium-webdriver": "3.4.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
-    "e2e-setup": "node_modules/selenium-standalone/bin/selenium-standalone install",
-    "e2e-tests": "nightwatch"
+    "e2e-tests": "cucumber-js",
+    "eject": "react-scripts eject"
   }
 }
