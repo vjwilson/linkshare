@@ -16,5 +16,8 @@ export default {
       linkUrl: 'https://www.smashingmagazine.com',
       favorites: 18
     }
-  ]
+  ],
+  uiStates: {
+    isDialogOpen: false
+  }
 };

@@ -66,4 +66,16 @@ defineSupportCode(function({Given, When, Then}) {
       });
     });
   });
+
+  When('I click the Add Link button', function () {
+    return this.driver.findElement({css: '.add-button'}).then(function(element) {
+      element.click();
+    });
+  });
+
+  Then('I should see a dialog to add a link', function () {
+    return this.driver.findElement({css: '.add-link-dialog'}).then(function(element) {
+      return element.findElement(seleniumWebdriver.By.tagName('input'));
+    });
+  });
 });
